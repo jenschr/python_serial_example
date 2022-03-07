@@ -20,7 +20,7 @@ GPIO.setup(RW_PIN,GPIO.OUT)
 ser = serial.Serial(
     port='/dev/ttyAMA1',
     baudrate=9600,
-    parity=serial.PARITY_ODD,
+    parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
     timeout=5
@@ -45,7 +45,7 @@ while 1 :
         # send the input to the device
         ser.write(input + '\r\n')
         # force sending right away
-        time.sleep(0.1)
+        #time.sleep(0.1)
         ser.flush()
         out = ''
         GPIO.output(RW_PIN,MODE_RECEIVE)
