@@ -45,14 +45,14 @@ while 1 :
         # send the input to the device
         ser.write(input + '\r\n')
         # force sending right away
+        time.sleep(0.1)
         ser.flush()
         out = ''
         GPIO.output(RW_PIN,MODE_RECEIVE)
         # let's wait one second before reading output (let's give device time to answer)
-time.sleep(0.1)
+        time.sleep(0.1)
         
-        while ser.inWaiting() > 0:
-            out += ser.read(1)
-            
-        if out != '':
-            print ">>" + out
+    while ser.inWaiting() > 0:
+        out += ser.read(1)
+    if out != '':
+        print ">>" + out
